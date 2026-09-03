@@ -1,0 +1,18 @@
+{
+  "name": "documents",
+  "version": "0.1.0",
+  "description": "Document review and Google Docs export skills for technical writing workflows.",
+  "author": {
+    "name": "Personal AI Marketplace"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Documents",
+    "shortDescription": "Review and export technical documents.",
+    "longDescription": "Technical writing skills for document review and Google Docs export.",
+    "developerName": "Personal AI Marketplace",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Help me review or export a technical document."
+  }
+}

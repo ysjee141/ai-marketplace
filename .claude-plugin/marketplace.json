@@ -13,6 +13,14 @@
       "version": "0.1.0",
       "category": "Productivity",
       "tags": ["skills", "output-style", "engineering"]
+    },
+    {
+      "name": "documents",
+      "source": "./plugins/documents",
+      "description": "Technical document review and Google Docs export skills.",
+      "version": "0.1.0",
+      "category": "Productivity",
+      "tags": ["skills", "documentation", "google-docs"]
     }
   ]
 }

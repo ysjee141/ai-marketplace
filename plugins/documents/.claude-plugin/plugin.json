@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "documents",
+  "displayName": "Documents",
+  "version": "0.1.0",
+  "description": "Document review and Google Docs export skills for technical writing workflows.",
+  "author": {
+    "name": "Personal AI Marketplace"
+  },
+  "keywords": ["skills", "documentation", "google-docs"],
+  "skills": "./skills/"
+}
