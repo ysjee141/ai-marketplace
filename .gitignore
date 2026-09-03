@@ -1,0 +1,5 @@
+.DS_Store
+
+# Local Claude Code settings are device-specific.
+.claude/*.local.md
+.claude/*.local.json

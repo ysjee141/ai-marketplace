@@ -1,0 +1,19 @@
+{
+  "name": "personal-agent-basics",
+  "version": "0.1.0",
+  "description": "Portable engineering skills for personal AI agents.",
+  "author": {
+    "name": "Personal AI Marketplace"
+  },
+  "keywords": ["skills", "engineering", "personal"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Personal Agent Basics",
+    "shortDescription": "Portable engineering skills for AI agents.",
+    "longDescription": "Reusable engineering response and concise-output skills for Codex and other compatible agents.",
+    "developerName": "Personal AI Marketplace",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Use the personal engineering response skills when they fit the task."
+  }
+}

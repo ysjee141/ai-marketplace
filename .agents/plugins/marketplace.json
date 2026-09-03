@@ -1,0 +1,20 @@
+{
+  "name": "personal-agent-marketplace",
+  "interface": {
+    "displayName": "Personal Agent Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "personal-agent-basics",
+      "source": {
+        "source": "local",
+        "path": "./plugins/personal-agent-basics"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
