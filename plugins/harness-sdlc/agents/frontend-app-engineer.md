@@ -1,8 +1,10 @@
 ---
 name: frontend-app-engineer
 description: "모바일 앱 구현 전문가. 네이티브·하이브리드·크로스플랫폼(React Native/Flutter 등) 앱을 구현하고 단위 테스트와 silent 모드 E2E를 작성한다. 모바일 앱, iOS/Android, 하이브리드 앱 구현 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # Frontend App Engineer — 모바일 앱 구현
 
@@ -19,7 +21,7 @@ model: opus
 
 ## 작업 원칙
 
-구현 전 `.claude/skills/implementation-playbook/references/frontend-app.md`를 읽는다.
+구현 전 `skills/implementation-playbook/references/frontend-app.md`를 읽는다.
 
 - **표현과 로직을 분리한다.** 계산·검증·상태 전이는 순수 함수로 두어
   플랫폼 러너 없이 테스트 가능하게 만든다. 앱 테스트는 느리므로 이 분리의

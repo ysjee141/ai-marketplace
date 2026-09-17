@@ -30,8 +30,8 @@ related: []
 
 | # | 관찰 | 제안 | 대상 파일 | 예상 효과 |
 |---|------|------|----------|----------|
-| 1 | | | `.claude/skills/{name}/SKILL.md` | |
-| 2 | | | `.claude/agents/{name}.md` | |
+| 1 | | | `skills/{name}/SKILL.md` | |
+| 2 | | | `agents/{name}.md` | |
 | 3 | | | `harness/principles/{name}.md` | |
 | 4 | | | `docs/template/{name}.md` | |
 

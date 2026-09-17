@@ -3,6 +3,8 @@ name: tech-spec-authoring
 description: "Technical Spec과 ADR 작성 절차. PRD와 분석 결과를 기술 명세로 전환하고 결정 항목을 ADR로 분리하여 사용자 승인을 받는다. '기술 명세 써줘', 'Tech Spec 작성', 'ADR 만들어줘', '기술 결정 정리' 요청 시 사용. Spec·ADR 수정·보완 요청에도 사용."
 ---
 
+먼저 [공통 실행 규약](../../harness/runtime.md)을 읽고 플러그인 자산 경로와 프로젝트 운영 프로필을 적용한다.
+
 # Tech Spec Authoring — 기술 명세 및 ADR 작성
 
 ## 목적

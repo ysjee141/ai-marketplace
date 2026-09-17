@@ -3,6 +3,8 @@ name: requirements-interview
 description: "요구사항 인터뷰와 PRD 작성 절차. 모호한 요구를 구조화된 질문으로 구체화하고 PRD 템플릿에 맞춰 문서화한다. 'PRD 써줘', '요구사항 정리하자', '기획서 작성', '뭘 만들지 정리하자', 요구사항이 모호한 개발 요청을 받았을 때 사용. PRD 수정·보완·업데이트 요청에도 사용."
 ---
 
+먼저 [공통 실행 규약](../../harness/runtime.md)을 읽고 플러그인 자산 경로와 프로젝트 운영 프로필을 적용한다.
+
 # Requirements Interview — 요구사항 구체화와 PRD 작성
 
 ## 목적

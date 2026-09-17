@@ -3,6 +3,8 @@ name: harness-docs
 description: "하네스 문서 규약과 작업 상태 기록 절차. /docs 배치 규칙, 템플릿 사용, /_workspace 구조, walkthrough·state.json 갱신, 문서 승격을 다룬다. '문서 어디에 둘까', '이 문서 승격해줘', 'walkthrough 갱신해줘', '진행 상황 기록해줘', '지금 어디까지 했지' 요청 시 사용. 모든 파이프라인 단계에서 공용으로 참조. 제외: 중단된 작업을 실제로 이어서 진행하는 것은 sdlc-orchestrator의 역할이다. 이 스킬은 상태 조회·기록만 담당한다. 파일명 변경 같은 단순 파일 조작도 제외."
 ---
 
+먼저 [공통 실행 규약](../../harness/runtime.md)을 읽고 플러그인 자산 경로와 프로젝트 운영 프로필을 적용한다.
+
 # Harness Docs — 문서 규약 및 작업 상태 관리
 
 모든 에이전트가 공용으로 참조하는 문서·상태 관리 절차.
@@ -173,18 +175,22 @@ _workspace/
 }
 ```
 
-`stage_status`: `pending` | `in_progress` | `in_review` | `rejected` | `passed`
+`stage_status`: `pending` | `in_progress` | `in_review` | `incomplete` | `rejected` | `passed` | `skipped` | `completed`
 
-**불일치 시 walkthrough.md를 정본으로 삼는다.**
+상태의 정본은 state.json이다. 불일치하면 게이트 기록·실제 산출물을 대조하고
+walkthrough를 복구한다. 롤백으로 pending이 된 단계는 예전 파일이 있어도 완료가 아니다.
+새 상태에는 schema_version, run_id, requested_mode, effective_config를 기록하고,
+게이트별 gate_attempts와 consecutive_rejects를 구분한다. 형식은
+`harness/principles/workspace.md` 3절을 따른다. 위 JSON은 이전 기록의 예시다.
 
 ## 세션 복구
 
-1. `_workspace/walkthrough.md` 존재 확인 — 없으면 신규 작업
+1. `_workspace/walkthrough.md` 존재 확인 — 없으면 작업별 state.json으로 목록을 복구
 2. "현재 작업" 표에서 slug·단계·상태·다음 행동을 읽는다
 3. `state.json`으로 교차 확인
 4. **해당 단계 디렉토리의 산출물 파일로 실제 완료 지점을 판정한다**
    — walkthrough가 "완료"라 해도 파일이 없으면 미완료다
-5. 사용자에게 재개 지점을 보고하고 확인받는다
+5. 재개 지점을 보고한다. 이미 재개 요청이 있으면 진행하고 대상이 불명확할 때만 묻는다
 
 ```markdown
 이전 작업을 발견했습니다.
@@ -211,7 +217,8 @@ _workspace/
 ### 절차
 
 1. 단계 종료 시 승격 후보를 선별한다
-2. **사용자에게 제시하고 승인을 받는다 — 자동 승격 금지**
+2. `docs.promote_requires_approval`이 true면 기존 승인을 확인하고 미승인 범위만
+   묻는다. false면 현재 요청 범위 안에서 승격한다.
 3. 승인된 문서를 **템플릿 형식으로 재작성**하여 배치한다
    (원문 복사가 아니다. 작업 로그와 참조 자산은 형식과 밀도가 다르다)
 4. `walkthrough.md`의 승격 이력에 기록한다

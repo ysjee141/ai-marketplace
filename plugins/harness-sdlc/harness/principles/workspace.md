@@ -22,6 +22,7 @@ _workspace/
 ├── walkthrough.md              ★ 전체 작업의 진행 현황 (복구 진입점)
 └── {slug}/                     작업 단위 폴더 (예: user-auth/)
     ├── state.json              기계 판독 상태 (단계·게이트·재시도 횟수)
+    ├── effective-config.json   실행 시점의 유효 설정·플러그인 버전·프로필 해시
     ├── 00_input/               사용자 입력 원문, 첨부 자료
     ├── 01_planning/            기획 — 인터뷰 로그, PRD 초안
     ├── 02_analysis/            분석 — 기획분석·개발분석 결과, 리스크
@@ -112,31 +113,39 @@ _workspace/
 
 ```json
 {
+  "schema_version": 1,
+  "run_id": "user-auth-20260917T100000",
   "slug": "user-auth",
   "created": "2026-08-14T09:10:00+09:00",
   "updated": "2026-08-14T14:32:00+09:00",
   "execution_mode": "balanced",
-  "mode_source": "config",
+  "requested_mode": "balanced",
+  "mode_source": "project",
+  "effective_config": "effective-config.json",
   "current_stage": "04_design",
   "stage_status": "in_progress",
   "ddd_level": 2,
   "stages": {
-    "01_planning": { "status": "passed", "gate_attempts": 1 },
-    "02_analysis": { "status": "passed", "gate_attempts": 2 },
-    "03_plan":     { "status": "passed", "gate_attempts": 1 },
-    "04_design":   { "status": "in_progress", "gate_attempts": 0 }
+    "01_planning": { "status": "passed", "gate_attempts": 1, "consecutive_rejects": 0 },
+    "02_analysis": { "status": "passed", "gate_attempts": 2, "consecutive_rejects": 0 },
+    "03_plan":     { "status": "passed", "gate_attempts": 1, "consecutive_rejects": 0 },
+    "04_design":   { "status": "in_progress", "gate_attempts": 0, "consecutive_rejects": 0 }
   },
   "tasks": { "total": 12, "done": 0 },
   "open_decisions": ["ADR-0003"]
 }
 ```
 
-`stage_status`: `pending` | `in_progress` | `in_review` | `rejected` | `passed`
+`stage_status`: `pending` | `in_progress` | `in_review` | `incomplete` | `rejected` | `passed` | `skipped` | `completed`
 `execution_mode`: `skill` | `balanced` | `agent` — 이 작업의 실행 모드 (`harness/execution-modes.md`)
-`mode_source`: `config` | `user` | `auto-suggested` — 모드가 결정된 경로
+`mode_source`: `defaults` | `project` | `task` | `user` | `auto-suggested` | `capability-fallback`
+이전 기록의 `config`는 기존 설정 출처로 읽으며 새 기록에서는 구체적인 출처를 쓴다.
 
 **walkthrough.md와 state.json은 항상 함께 갱신한다.** 전자는 사람용 서사,
-후자는 오케스트레이터용 상태다. 불일치가 발견되면 walkthrough.md를 정본으로 삼는다.
+후자는 상태의 정본이다. 불일치하면 state.json·게이트 기록·실제 산출물을 대조하고
+walkthrough를 복구한다. 롤백으로 pending이 된 단계는 예전 파일이 있어도 완료가 아니다.
+state.json은 완성된 JSON을 임시 파일에 쓴 뒤 원자적으로 교체하고 walkthrough를 갱신한다.
+두 파일의 수정 도중 중단되면 이 대조 절차로 복구한다.
 
 ### 산출물 자기 기술
 
@@ -153,12 +162,13 @@ _workspace/
 새 세션에서 오케스트레이터가 수행하는 순서:
 
 1. `_workspace/walkthrough.md` 존재 확인
-   - **없음** → 신규 작업. 초기 실행으로 진행
+   - **없음** → 작업별 state.json이 있으면 진행 목록을 복구한다. 둘 다 없으면 신규 작업
 2. `walkthrough.md`의 "현재 작업" 표에서 slug·단계·상태·다음 행동을 읽는다
 3. `_workspace/{slug}/state.json`으로 기계 상태를 교차 확인한다
 4. 해당 단계 디렉토리의 산출물 목록을 확인하여 **실제 완료 지점**을 판정한다
    - walkthrough가 "완료"라 해도 산출물 파일이 없으면 미완료로 간주한다
-5. 사용자에게 재개 지점을 보고하고 확인받는다:
+5. 재개 지점을 보고한다. 사용자가 이미 이어서 진행을 요청했다면 바로 재개하고,
+   여러 작업 중 대상이 불명확한 경우에만 다음과 같이 묻는다:
 
 ```markdown
 이전 작업을 발견했습니다.
@@ -179,6 +189,7 @@ _workspace/
   로컬에서 사후 검증·감사 추적의 근거가 된다
 - 동일 slug로 **새 실행**을 시작할 때는 기존 폴더를 삭제하지 않고
   `_workspace/{slug}_{YYYYMMDD_HHMMSS}/`로 이동한 뒤 새로 만든다
-- 작업 완료 후에도 유지한다. 정리는 사용자가 명시적으로 요청할 때만 수행한다
+- 완료 후 docs.workspace_retention이 keep이면 유지한다. archive이면
+  `_workspace/archive/{slug}-{timestamp}/`로 이동하고 walkthrough를 갱신한다. 삭제하지 않는다
 - 승격되지 않은 내용은 언젠가 사라질 수 있음을 전제로, **판단의 근거가 되는 것은
   반드시 승격한다** (`documentation.md` 5절)

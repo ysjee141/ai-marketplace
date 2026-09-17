@@ -1,13 +1,20 @@
 {
   "name": "harness-sdlc",
-  "version": "0.1.0",
-  "description": "도구 중립적인 SDLC 파이프라인, 게이트, 역할 정의와 문서 템플릿을 제공하는 개발 하네스.",
+  "version": "0.1.0+codex.20260917081819",
+  "description": "\ub3c4\uad6c \uc911\ub9bd\uc801\uc778 SDLC \ud30c\uc774\ud504\ub77c\uc778, \uac8c\uc774\ud2b8, \uc5ed\ud560 \uc815\uc758\uc640 \ubb38\uc11c \ud15c\ud50c\ub9bf\uc744 \uc81c\uacf5\ud558\ub294 \uac1c\ubc1c \ud558\ub124\uc2a4.",
   "author": {
     "name": "ysjee141",
     "url": "https://github.com/ysjee141"
   },
   "repository": "https://github.com/ysjee141/harness-sdlc",
-  "keywords": ["sdlc", "software-development", "architecture", "ddd", "testing", "engineering"],
+  "keywords": [
+    "sdlc",
+    "software-development",
+    "architecture",
+    "ddd",
+    "testing",
+    "engineering"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Harness SDLC",
@@ -15,8 +22,11 @@
     "longDescription": "A tool-neutral SDLC harness for requirements, analysis, planning, architecture, implementation, testing, review, and deployment workflows.",
     "developerName": "ysjee141",
     "category": "Productivity",
-    "capabilities": ["Write"],
+    "capabilities": [
+      "Write"
+    ],
     "defaultPrompt": [
+      "Initialize Harness for this project and interview me about its purpose and operating rules.",
       "Run the SDLC workflow for this feature.",
       "Analyze the impact and risks of this change.",
       "Review this design against the project gates."

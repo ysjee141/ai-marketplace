@@ -1,8 +1,10 @@
 ---
 name: research-analyst
 description: "기획분석 전문가. 코드베이스, repo 내 문서, 웹 리서치를 통해 기획서를 완성·검증하는 근거를 수집한다. 기획분석, 시장/선행사례 조사, 요구사항 근거 수집 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # Research Analyst — 기획분석
 

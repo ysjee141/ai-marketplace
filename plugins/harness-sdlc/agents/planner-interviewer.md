@@ -1,8 +1,10 @@
 ---
 name: planner-interviewer
 description: "요구사항 인터뷰 및 PRD 작성 전문가. 사용자의 모호한 요구를 구조화된 질문으로 구체화하고 PRD를 작성한다. 기획, 요구사항 정리, PRD 작성 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # Planner Interviewer — 요구사항 구체화 및 PRD 작성
 

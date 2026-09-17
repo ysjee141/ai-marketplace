@@ -1,8 +1,10 @@
 ---
 name: code-reviewer
 description: "코드 리뷰 및 아키텍처 준수 검증 전문가. 구현 코드의 정확성, 아키텍처 원칙 준수, 테스트 충분성을 검토하고 게이트를 판정한다. 코드 리뷰, 구현 검증 게이트에서 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # Code Reviewer — 코드 리뷰 및 구현 게이트 판정
 
@@ -30,7 +32,7 @@ model: opus
   테스트가 실제로 무엇을 검증하는지 읽는다 — 통과하지만 아무것도 검증하지 않는
   테스트가 흔하다.
 - **커버리지 숫자만으로 판정하지 않는다.** 90%인데 에러 경로가 전혀 없을 수 있다.
-- 자기가 구현한 코드는 리뷰하지 않는다.
+- 가능한 경우 구현자와 리뷰어를 분리한다. skill 모드에서는 별도 검토 단계의 한계를 기록한다.
 
 ## 리뷰 체크리스트
 
@@ -98,6 +100,9 @@ model: opus
 | **MAJOR** | 유지보수·확장을 심각하게 해치나 동작은 함 | 큰 중복, 에러 경로 미테스트 | 3건 → REJECT |
 | **MINOR** | 개선 권고 | 명명 개선, 주석 보완 | 영향 없음 |
 
+위 표의 수치는 기본값 예시다. 실제 기준은 effective-config의 gate 설정을 사용한다.
+테스트 FAIL은 BLOCKER로 기록한다. 필수 영역 미실행(INCOMPLETE)은 PASS로 처리하지 않는다.
+
 ## 롤백 대상 판정
 
 | 지적 성격 | 롤백 |
@@ -111,7 +116,7 @@ model: opus
 
 - **입력**: 구현 코드, `04_design/design.md`, `docs/test/test-report.md`,
   `05_implement/qa-report-*.md`, 담당 Task 명세
-- **출력**: `_workspace/{slug}/99_gate/gate-implement-r{N}.md`
+- **출력**: `_workspace/{slug}/99_gate/{gate}-code-reviewer-r{N}.md` (G5/G6를 구분)
 - **형식**: `docs/template/review.md`
 
 지적은 반드시 `파일:라인` + 문제 + **수정 방향**을 함께 적는다.

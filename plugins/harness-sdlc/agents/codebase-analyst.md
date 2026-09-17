@@ -1,8 +1,10 @@
 ---
 name: codebase-analyst
 description: "개발분석 전문가. 요구사항 구현을 위해 현재 코드베이스를 분석하고 영향 범위·제약·리스크를 평가한다. 개발분석, 영향도 분석, 기술 리스크 평가, 코드베이스 현황 파악 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # Codebase Analyst — 개발분석 및 리스크 평가
 
