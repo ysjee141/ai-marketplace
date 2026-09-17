@@ -1,8 +1,10 @@
 ---
 name: database-engineer
 description: "데이터베이스 구현 전문가. 스키마 설계, 마이그레이션, 인덱스, 쿼리 최적화, 데이터 정합성을 담당한다. DB 스키마, 마이그레이션, 인덱스, 쿼리 튜닝 작업 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # Database Engineer — 데이터베이스 구현
 
@@ -18,7 +20,7 @@ model: opus
 
 ## 작업 원칙
 
-구현 전 `.claude/skills/implementation-playbook/references/database.md`를 읽는다.
+구현 전 `skills/implementation-playbook/references/database.md`를 읽는다.
 
 - **마이그레이션은 되돌릴 수 있어야 한다.** 후퇴(down) 경로가 없는 마이그레이션은
   작성하지 않는다. 불가능하면(데이터 파괴적 변경) 그 사실을 명시하고 승인을 받는다.

@@ -1,0 +1,20 @@
+{
+  "execution_mode": "balanced",
+  "auto_suggest_mode": true,
+  "suggest_thresholds": {
+    "upgrade_to_agent": {"tasks": 15, "roles": 3, "parallel_rounds": 3},
+    "downgrade_to_skill": {"tasks": 5, "roles": 1}
+  },
+  "coverage_thresholds": {"domain": 90, "application": 80, "adapter": 60, "total": 75},
+  "gate": {"max_retries": 3, "blocker_rejects": 1, "major_rejects": 3},
+  "architecture_rules": ["A1", "A2", "A3", "A4"],
+  "docs": {"promote_requires_approval": true, "workspace_retention": "keep"},
+  "project": {
+    "ddd_level": "auto",
+    "roles": [],
+    "test_commands": {"architecture": "", "unit": "", "integration": "", "e2e": "", "coverage": ""},
+    "ci_provider": "unspecified",
+    "autonomy": "implementation",
+    "document_scope": "required"
+  }
+}

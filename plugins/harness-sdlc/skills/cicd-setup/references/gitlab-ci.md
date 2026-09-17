@@ -8,7 +8,9 @@ stages: [verify, test, build, deploy]
 default:
   image: node:20                      # latest 금지
   interruptible: true                 # 새 파이프라인 시작 시 중단 허용
-  timeout: 20m
+
+.timed-job:
+  timeout: 20m                       # default.timeout 대신 잡에 상속
 
 variables:
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
@@ -21,6 +23,7 @@ variables:
     policy: pull
 
 lint:
+  extends: .timed-job
   stage: verify
   <<: *node-cache
   script:
@@ -29,6 +32,7 @@ lint:
     - npm run typecheck
 
 arch:                                 # 아키텍처 검증을 테스트보다 먼저
+  extends: .timed-job
   stage: verify
   <<: *node-cache
   script:
@@ -36,6 +40,7 @@ arch:                                 # 아키텍처 검증을 테스트보다 �
     - npm run test:arch
 
 unit:
+  extends: .timed-job
   stage: test
   needs: [arch]                       # 구조 검증 통과 후에만
   <<: *node-cache
@@ -53,6 +58,7 @@ unit:
     expire_in: 1 week
 
 integration:
+  extends: .timed-job
   stage: test
   needs: [arch]
   services:
@@ -66,6 +72,7 @@ integration:
     - npm run test:integration
 
 e2e:
+  extends: .timed-job
   stage: test
   needs: [arch]
   image: mcr.microsoft.com/playwright:v1.47.0-jammy   # 버전 고정
@@ -87,12 +94,13 @@ e2e:
 | 잡 의존 | `needs`로 DAG 구성. 아키텍처 검증을 선행으로 |
 | 리포트 | `artifacts.reports.junit` — MR 화면에 테스트 결과 표시 |
 | 커버리지 | `coverage` 정규식 + cobertura 리포트 |
-| 타임아웃 | `default.timeout` 또는 잡별 `timeout` |
+| 타임아웃 | 잡별 `timeout` 또는 `extends`로 상속. `default.timeout`은 사용하지 않음 |
 
 ## 배포 (환경 + 수동 승인)
 
 ```yaml
 deploy:staging:
+  extends: .timed-job
   stage: deploy
   environment:
     name: staging
@@ -102,6 +110,7 @@ deploy:staging:
   script: ./scripts/deploy.sh staging
 
 deploy:production:
+  extends: .timed-job
   stage: deploy
   environment:
     name: production
@@ -126,6 +135,7 @@ deploy:production:
 
 ```yaml
 rollback:production:
+  extends: .timed-job
   stage: deploy
   environment:
     name: production

@@ -12,17 +12,19 @@ related: []
 
 # 테스트 리포트
 
-> 이 문서는 **매 실행마다 덮어쓴다.** 최신 상태만 의미가 있으며,
-> 이력은 CI 아티팩트에 남는다.
+> 작업 원본은 `_workspace/{slug}/06_test/test-report.md`에 보존한다.
+> `docs/test/test-report.md`는 최신 사본이다. 다른 작업의 원본을 대체하지 않는다.
 
 ## 1. 요약
 
 | 항목 | 값 |
 |------|-----|
-| **판정** | PASS / **FAIL** |
+| **판정** | PASS / FAIL / INCOMPLETE |
+| 작업 / 검증한 commit / 작업 트리 변경 | |
+| 실행 명령 / 종료 코드 | |
 | 총 테스트 | |
 | 성공 / 실패 / 스킵 | / / |
-| 전체 라인 커버리지 | {n}% (기준 75% — 충족/미달) |
+| 전체 라인 커버리지 | {n}% (유효 설정 기준 — 충족/미달) |
 | 전체 브랜치 커버리지 | {n}% |
 | 실행 시각 | {YYYY-MM-DD HH:MM} |
 | 총 소요 | |
@@ -60,11 +62,11 @@ related: []
 
 | 계층 | 라인 | 기준 | 판정 | 브랜치 |
 |------|------|------|------|--------|
-| Domain | | 90% | | |
-| Application | | 80% | | |
-| Adapter | | 60% | | |
+| Domain | | {coverage_thresholds.domain}% | | |
+| Application | | {coverage_thresholds.application}% | | |
+| Adapter | | {coverage_thresholds.adapter}% | | |
 | Infrastructure | | - | - | |
-| **전체** | | 75% | | |
+| **전체** | | {coverage_thresholds.total}% | | |
 
 > 라인만 높고 브랜치가 낮으면 분기 조건이 검증되지 않은 것이다.
 

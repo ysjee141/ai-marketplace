@@ -8,15 +8,14 @@ on:
   push: { branches: [main] }
   pull_request:
 
-concurrency:                          # 같은 브랜치 중복 실행 취소
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 permissions:                          # 최소 권한. 기본값에 의존하지 않는다
   contents: read
 
 jobs:
   verify:
+    concurrency:                     # 검증 잡만 취소. 진행 중인 배포는 보호
+      group: verify-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -59,7 +58,7 @@ jobs:
 
 | 항목 | 설정 |
 |------|------|
-| 동시 실행 제어 | `concurrency` + `cancel-in-progress` |
+| 동시 실행 제어 | 검증 잡의 `concurrency` + `cancel-in-progress`. 배포 포함 워크플로 전체에는 취소 설정 금지 |
 | 권한 | `permissions`를 명시. 기본 `write-all`에 의존하지 않는다 |
 | 액션 버전 | 태그 고정(`@v4`). 보안이 중요하면 커밋 SHA 고정 |
 | 캐시 | `setup-*`의 `cache` 옵션이 잠금 파일 해시를 자동 사용 |

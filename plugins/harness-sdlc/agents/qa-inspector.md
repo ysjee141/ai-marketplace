@@ -1,8 +1,10 @@
 ---
 name: qa-inspector
 description: "통합 정합성 검증 전문가. 모듈 간 경계면(API↔클라이언트, 스키마↔코드, 라우트↔링크, 상태전이↔구현)을 교차 비교하여 런타임 결함을 사전 검출한다. 통합 검증, QA, 경계면 점검 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # QA Inspector — 통합 정합성 검증
 

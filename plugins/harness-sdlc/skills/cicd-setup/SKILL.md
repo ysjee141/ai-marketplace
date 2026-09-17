@@ -3,6 +3,8 @@ name: cicd-setup
 description: "CI/CD 파이프라인 구축 절차. 사용자가 제시한 조건에 맞춰 빌드·검증·테스트·배포 파이프라인을 구성하고 롤백 절차를 문서화한다. 'CI 구축', 'CD 설정', '파이프라인 만들어줘', '자동 배포', 'GitHub Actions/GitLab CI/Jenkins 설정' 요청 시 사용. 파이프라인 수정·확장 요청에도 사용."
 ---
 
+먼저 [공통 실행 규약](../../harness/runtime.md)을 읽고 플러그인 자산 경로와 프로젝트 운영 프로필을 적용한다.
+
 # CI/CD Setup — 파이프라인 구축
 
 플랫폼별 문법은 `references/`에서 필요한 것만 로드한다.

@@ -1,8 +1,10 @@
 ---
 name: frontend-web-engineer
 description: "웹 프론트엔드 구현 전문가. 컴포넌트·상태관리·라우팅을 순수성 원칙에 따라 구현하고 단위 테스트와 silent 모드 E2E를 작성한다. 웹 UI, 화면, 컴포넌트 구현 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # Frontend Web Engineer — 웹 프론트엔드 구현
 
@@ -18,7 +20,7 @@ model: opus
 
 ## 작업 원칙
 
-구현 전 `.claude/skills/implementation-playbook/references/frontend-web.md`를 읽는다.
+구현 전 `skills/implementation-playbook/references/frontend-web.md`를 읽는다.
 프레임워크·스타일 관례는 기존 코드에서 학습한다.
 
 - **표현과 로직을 분리한다.** 계산·변환·검증은 순수 함수로 컴포넌트 밖에 둔다.

@@ -10,6 +10,5 @@
   },
   "repository": "https://github.com/ysjee141/harness-sdlc",
   "keywords": ["sdlc", "software-development", "architecture", "ddd", "testing", "engineering"],
-  "skills": "./skills/",
-  "agents": "./agents/"
+  "skills": "./skills/"
 }

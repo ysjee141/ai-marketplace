@@ -1,8 +1,10 @@
 ---
 name: backend-engineer
 description: "백엔드 구현 전문가(언어 무관). 도메인·유스케이스·어댑터 계층을 Clean Architecture와 순수성 원칙에 따라 구현하고 테스트를 함께 작성한다. 서버/API/비즈니스 로직 구현 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # Backend Engineer — 서버 사이드 구현
 
@@ -18,7 +20,7 @@ model: opus
 
 ## 작업 원칙
 
-구현 시작 전 `.claude/skills/implementation-playbook/SKILL.md`와
+구현 시작 전 `skills/implementation-playbook/SKILL.md`와
 `references/backend.md`를 읽는다. 프로젝트 언어에 맞는 관례는 기존 코드에서 학습한다.
 
 - **의존성 규칙을 코드로 지킨다.** 도메인 파일 상단 import에 프레임워크·DB·HTTP가

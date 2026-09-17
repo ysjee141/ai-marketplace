@@ -9,7 +9,8 @@ Claude Code와 Codex에서 재사용할 AI agent skill을 GitHub로 관리하기
 ├── .agents/plugins/marketplace.json       # Codex marketplace
 ├── .claude-plugin/marketplace.json        # Claude Code marketplace
 └── plugins/
-    └── documents/                         # 기술 문서 플러그인
+    ├── documents/                         # 기술 문서 플러그인
+    └── harness-sdlc/                      # 프로젝트 인터뷰·SDLC 운영
 ```
 
 각 플러그인의 `skills/`는 Claude Code와 Codex에서 함께 사용할 수 있습니다.
@@ -23,6 +24,7 @@ Claude Code와 Codex에서 재사용할 AI agent skill을 GitHub로 관리하기
 ```text
 /plugin marketplace add <owner>/<repo>
 /plugin install documents@personal-agent-marketplace
+/plugin install harness-sdlc@personal-agent-marketplace
 ```
 
 ### Codex
@@ -32,9 +34,16 @@ Claude Code와 Codex에서 재사용할 AI agent skill을 GitHub로 관리하기
 ```bash
 codex plugin marketplace add /path/to/ai-marketplace
 codex plugin add documents@personal-agent-marketplace
+codex plugin add harness-sdlc@personal-agent-marketplace
 ```
 
 `documents` skill은 Codex의 skill 선택/호출 대상으로 사용할 수 있습니다.
+
+`harness-sdlc`는 설치 후 대상 프로젝트의 새 대화에서
+“harness-init으로 이 프로젝트의 하네스를 설정해줘”라고 요청합니다.
+별도의 셸 설치 없이 프로젝트 목적·제약·완료 기준을 인터뷰하고 `.harness/`에
+운영 프로필을 만듭니다. 공통 스킬은 플러그인에서 읽습니다.
+상세 운영·검증 방법은 [Harness README](plugins/harness-sdlc/README.md)를 참고합니다.
 
 ## 새 항목 추가
 

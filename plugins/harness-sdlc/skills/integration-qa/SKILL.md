@@ -3,6 +3,8 @@ name: integration-qa
 description: "통합 정합성 검증 절차. API↔클라이언트, 스키마↔코드, 라우트↔링크, 상태전이↔구현 등 경계면을 양쪽 동시 읽기로 교차 비교하여 런타임 결함을 사전 검출한다. '통합 검증', 'QA 해줘', '경계면 점검', '연동 확인' 요청 시 사용. 다음 증상에도 반드시 사용: 'is not a function', 'undefined is not an object', 'Cannot read property', API 응답 형태가 기대와 다름, 필드명 불일치(camelCase↔snake_case), 링크·라우트 404, 상태가 특정 값에서 안 넘어감, 빌드는 되는데 런타임에 터짐, 엔드포인트는 있는데 화면이 동작 안 함. 재검증 요청에도 사용."
 ---
 
+먼저 [공통 실행 규약](../../harness/runtime.md)을 읽고 플러그인 자산 경로와 프로젝트 운영 프로필을 적용한다.
+
 # Integration QA — 통합 정합성 검증
 
 ## 목적

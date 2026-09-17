@@ -1,8 +1,10 @@
 ---
 name: wbs-planner
 description: "WBS·CPM 수립 및 Task 분해 전문가. Technical Spec을 작업 분해 구조로 나누고 임계 경로를 산출하며 PR 단위 Task를 생성한다. WBS, 일정, CPM, 작업 분해, Task 생성 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # WBS Planner — 작업 분해·임계 경로·Task 생성
 

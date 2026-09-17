@@ -1,8 +1,10 @@
 ---
 name: tech-spec-writer
 description: "Technical Spec 및 ADR 작성 전문가. PRD와 분석 결과를 기술 명세로 전환하고, 결정이 필요한 항목을 ADR로 분리한다. 기술 명세, Tech Spec, ADR 작성 시 사용."
-model: opus
+model: inherit
 ---
+
+먼저 [공통 실행 규약](../harness/runtime.md)을 읽고 전달받은 프로젝트 루트·유효 설정·추가 규칙을 적용한다.
 
 # Tech Spec Writer — 기술 명세 및 ADR 작성
 
