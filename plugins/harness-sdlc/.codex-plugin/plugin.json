@@ -1,0 +1,25 @@
+{
+  "name": "harness-sdlc",
+  "version": "0.1.0",
+  "description": "도구 중립적인 SDLC 파이프라인, 게이트, 역할 정의와 문서 템플릿을 제공하는 개발 하네스.",
+  "author": {
+    "name": "ysjee141",
+    "url": "https://github.com/ysjee141"
+  },
+  "repository": "https://github.com/ysjee141/harness-sdlc",
+  "keywords": ["sdlc", "software-development", "architecture", "ddd", "testing", "engineering"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Harness SDLC",
+    "shortDescription": "Run a gated software delivery workflow.",
+    "longDescription": "A tool-neutral SDLC harness for requirements, analysis, planning, architecture, implementation, testing, review, and deployment workflows.",
+    "developerName": "ysjee141",
+    "category": "Productivity",
+    "capabilities": ["Write"],
+    "defaultPrompt": [
+      "Run the SDLC workflow for this feature.",
+      "Analyze the impact and risks of this change.",
+      "Review this design against the project gates."
+    ]
+  }
+}
