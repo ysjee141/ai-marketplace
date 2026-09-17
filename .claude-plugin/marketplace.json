@@ -21,6 +21,14 @@
       "version": "0.1.0",
       "category": "Productivity",
       "tags": ["skills", "documentation", "google-docs"]
+    },
+    {
+      "name": "harness-sdlc",
+      "source": "./plugins/harness-sdlc",
+      "description": "A tool-neutral SDLC harness with gated workflows, role definitions, and documentation templates.",
+      "version": "0.1.0",
+      "category": "Productivity",
+      "tags": ["sdlc", "architecture", "testing", "engineering"]
     }
   ]
 }

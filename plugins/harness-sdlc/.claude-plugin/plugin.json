@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "harness-sdlc",
+  "displayName": "Harness SDLC",
+  "version": "0.1.0",
+  "description": "A tool-neutral SDLC harness with gated workflows, role definitions, and documentation templates.",
+  "author": {
+    "name": "ysjee141",
+    "url": "https://github.com/ysjee141"
+  },
+  "repository": "https://github.com/ysjee141/harness-sdlc",
+  "keywords": ["sdlc", "software-development", "architecture", "ddd", "testing", "engineering"],
+  "skills": "./skills/",
+  "agents": "./agents/"
+}

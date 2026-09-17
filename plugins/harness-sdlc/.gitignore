@@ -1,0 +1,21 @@
+# 작업 중간 산출물 — 정식 문서로 승격된 것만 /docs 하위에 커밋한다
+/_workspace/
+/_workspace_*/
+
+# OS / 편집기
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# 언어 공통
+node_modules/
+dist/
+build/
+coverage/
+__pycache__/
+*.pyc
+.venv/
+venv/
+target/
